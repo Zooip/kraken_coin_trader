@@ -1,0 +1,1 @@
+# kraken_coin_trader
