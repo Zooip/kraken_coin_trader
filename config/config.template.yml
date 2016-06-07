@@ -1,0 +1,5 @@
+development:
+  api_key: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  private_key: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  target_period: 5
+  order_euro_rate: 5
