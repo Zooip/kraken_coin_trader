@@ -1,0 +1,40 @@
+GIT
+  remote: https://github.com/leishman/kraken_ruby
+  revision: bce2daad1f5fd761c5b07c018c5a911c3922d66d
+  specs:
+    kraken_ruby (0.5.0)
+      addressable
+      hashie
+      httparty
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    activesupport (4.2.6)
+      i18n (~> 0.7)
+      json (~> 1.7, >= 1.7.7)
+      minitest (~> 5.1)
+      thread_safe (~> 0.3, >= 0.3.4)
+      tzinfo (~> 1.1)
+    addressable (2.4.0)
+    hashie (3.4.4)
+    httparty (0.13.7)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
+    i18n (0.7.0)
+    json (1.8.3)
+    minitest (5.9.0)
+    multi_xml (0.5.5)
+    thread_safe (0.3.5)
+    tzinfo (1.2.2)
+      thread_safe (~> 0.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  activesupport
+  kraken_ruby!
+
+BUNDLED WITH
+   1.11.2
