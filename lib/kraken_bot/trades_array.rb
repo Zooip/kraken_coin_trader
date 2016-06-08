@@ -41,11 +41,13 @@ class KrakenBot::TradesArray
   end
 
   def total_value
-    @trades.map{|t| t.value}.reduce(:+)
+    result=@trades.map{|t| t.value}.reduce(:+)
+    puts @trades unless result
+    result
   end
 
   def mean_price
-    total_value/total_amount
+    total_value.to_f/total_amount.to_f
   end
 
   def median_price

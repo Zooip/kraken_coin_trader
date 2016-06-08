@@ -13,7 +13,8 @@ class KrakenBot
     end
 
     def self.load
-      self.new(value: 50)
+      v=50-KrakenBot::Asset.all.map{|a|a.cost}.reduce(:+)
+      self.new(value: v)
     end
 
   end

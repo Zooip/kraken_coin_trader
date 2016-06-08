@@ -14,7 +14,7 @@ class KrakenBot
   ENV['KRAKEN_BOT_ENV']||="development"
 
   def initialize(kraken_client: nil)
-   @kraken= kraken_client || Kraken::Client.new(self.class.config['api_key'],self.class.config['private_key'])   
+   @kraken= kraken_client || Kraken::Client.new(self.class.config['api_key'],self.class.config['private_key']) 
   end
 
   def run
@@ -30,7 +30,7 @@ class KrakenBot
   end
 
   def self.config
-    RAW_CONFIG[ENV['GORG_LDAP_DAEMON_ENV']]
+    RAW_CONFIG[ENV['KRAKEN_BOT_ENV']]
   end
 
   def self.root

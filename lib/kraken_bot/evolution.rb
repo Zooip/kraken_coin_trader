@@ -52,7 +52,7 @@ class KrakenBot::Evolution
     puts   "|____________|____________|____________|____________|"
     printf("| Current    | %4.6f | %4.6f | %4.6f |\n",current_price,current_buying_price,current_selling_price)
     printf("| Prediction | %4.6f | %4.6f | %4.6f |\n",price_prediction,buying_price_prediction,selling_price_prediction)
-    printf("| Pariation  | %+2.7f | %+2.7f | %+2.7f |\n",price_variation_prediction,buying_price_variation_prediction,selling_price_variation_prediction)
+    printf("| Variation  | %+2.7f | %+2.7f | %+2.7f |\n",price_variation_prediction,buying_price_variation_prediction,selling_price_variation_prediction)
     printf("| Percent    | %+2.5f %% | %+2.5f %% | %+2.5f %% |\n",price_variation_prediction*100/current_price,buying_price_variation_prediction*100/current_buying_price,selling_price_variation_prediction*100/current_selling_price)
     puts   "|____________|____________|____________|____________|"
     puts
