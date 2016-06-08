@@ -1,3 +1,5 @@
 *.sublime-*
 config/config.yml
 secrets/*
+**.sqlite*
+**.db*

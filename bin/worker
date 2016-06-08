@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+require "bundler/setup"
+
+
+BIN_BASE_PATH=File.expand_path('..',File.dirname(__FILE__))
+require File.join(BIN_BASE_PATH,"lib/kraken_bot.rb")
+
+KrakenBot.new.run

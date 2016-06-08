@@ -12,4 +12,14 @@ class KrakenBot::SellingOrder < KrakenBot::Order
     (1-SELLING_FEE/100)
   end
 
+
+  def process!
+    if KrakenBot.config['simulation']
+      " [x] Simulate selling #{self.amount} for #{self.reward}€"
+      KrakenBot.balance.value += reward
+    else
+
+    end
+  end
+
 end

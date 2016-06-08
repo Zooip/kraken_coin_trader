@@ -23,4 +23,8 @@ class KrakenBot::Order
     @amount*(@price||@ordered_price)
   end
 
+  def equivalent_price
+    (@price||@ordered_price)*fee_multiplyer
+  end
+
 end

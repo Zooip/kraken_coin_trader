@@ -11,29 +11,22 @@ require 'active_support/all'
 class KrakenBot
   path=File.expand_path("../../config/config.yml",__FILE__)
   RAW_CONFIG ||= YAML::load(File.open(path))
-  ENV['GORG_LDAP_DAEMON_ENV']||="development"
+  ENV['KRAKEN_BOT_ENV']||="development"
 
   def initialize(kraken_client: nil)
-   @kraken= kraken_client || Kraken::Client.new(self.class.config['api_key'],self.class.config['private_key'])
+   @kraken= kraken_client || Kraken::Client.new(self.class.config['api_key'],self.class.config['private_key'])   
   end
 
- def run
+  def run
     begin
-      self.start
-      puts " [*] Waiting for messages. To exit press CTRL+C"
+      puts " [*] Started"
       loop do
-        sleep(1)
+        puts " [*] Current balance : #{self.class.balance.value}"
+        @strategy=KrakenBot::Strategy.new(kraken_client: @kraken).action
+        sleep(30)
       end
     rescue SystemExit, Interrupt => _
-      self.stop
     end
-  end
-
-  def start
-    
-  end
-
-  def stop
   end
 
   def self.config
@@ -41,7 +34,7 @@ class KrakenBot
   end
 
   def self.root
-    File.dirname(__FILE__)
+    File.expand_path("../..",__FILE__)
   end
 end
 
@@ -50,6 +43,9 @@ require 'kraken_bot/trades_array'
 require 'kraken_bot/evolution'
 require 'kraken_bot/order'
 require 'kraken_bot/buying_order'
+require 'kraken_bot/selling_order'
+require 'kraken_bot/asset'
+require 'kraken_bot/strategy'
+require 'kraken_bot/balance'
 
-# Dir[File.expand_path("../**/*.rb",__FILE__)].each {|file| require file }
 Dir[File.expand_path("../../config/initializers/*.rb",__FILE__)].each {|file|require file }
