@@ -3,7 +3,7 @@ require 'active_record'
 class KrakenBot::Asset < ActiveRecord::Base
 
   def equivalent_price
-    self.cost/self.volume
+    self.cost.to_f/self.volume.to_f
   end
 
   def expected_selling_price
@@ -34,17 +34,17 @@ class KrakenBot::Asset < ActiveRecord::Base
 
 
   def self.cheaper
-    self.all.min{|a| a.equivalent_price}
+    self.all.min{|a,b| a.equivalent_price <=> b.equivalent_price}
   end
 
   def self.print_state
-    puts   "____________________________________________________"
-    puts   "| Volume     |       Cost |  Buy Price |  Exp. Pric.|"
-    puts   "|____________|____________|____________|____________|"
+    puts   "___________________________________________________________"
+    puts   "|   Id | Volume     |       Cost |  Buy Price |  Exp. Pric.|"
+    puts   "|______|____________|____________|____________|____________|"
     self.all.each do | a|
-      printf("| %#2.8f | %10.6f | %10.6f | %10.6f |\n",a.volume, a.cost,a.equivalent_price, a.expected_selling_price)
+      printf("| %#4d | %#2.8f | %10.6f | %10.6f | %10.6f |\n",a.id,a.volume, a.cost,a.equivalent_price, a.expected_selling_price)
     end
-    puts   "|____________|____________|____________|____________|"
+    puts   "|______|____________|____________|____________|____________|"
     puts
   end
 

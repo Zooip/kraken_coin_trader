@@ -20,9 +20,16 @@ class KrakenBot::Strategy
     variation_ratio=@evolution.buying_price_variation_prediction/@evolution.current_buying_price
     cheaper_asset=KrakenBot::Asset.cheaper
 
+
+
     if variation_ratio < -0.0002
       puts " [x] Good variation for buying"
-      if !cheaper_asset ||(@evolution.buying_price_prediction*(1+KrakenBot::BuyingOrder::BUYING_FEE*0.01)<(cheaper_asset.equivalent_price*0.995))
+      buying_equivalent_price=@evolution.buying_price_prediction*(1+KrakenBot::BuyingOrder::BUYING_FEE*0.01)
+      puts " [x] Buying equivalent price"
+      puts " [x] Cheaper asset : n°#{cheaper_asset.id} price : #{cheaper_asset.equivalent_price}"
+      threshold=cheaper_asset.equivalent_price*0.995
+      puts " [x] Threshold = #{threshold}"
+      if !cheaper_asset ||(buying_equivalent_price<threshold)
         buy!(@evolution.buying_price_prediction)
       end
     end
